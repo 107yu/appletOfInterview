@@ -1,6 +1,6 @@
 # sign
 
-> A Sign Project aim to improve  interview  successfully
+> A Sign Project aim to improve interview sucessfully
 
 ## Build Setup
 

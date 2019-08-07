@@ -1,4 +1,6 @@
 <script>
+import {login} from '@/service';
+import "../static/font/iconfont.css"
 export default {
   created () {
     // 调用API从本地缓存中获取数据
@@ -9,42 +11,25 @@ export default {
      * 百度：mpvue === swan, mpvuePlatform === 'swan'
      * 支付宝(蚂蚁)：mpvue === my, mpvuePlatform === 'my'
      */
-
-    let logs
-    if (mpvuePlatform === 'my') {
-      logs = mpvue.getStorageSync({key: 'logs'}).data || []
-      logs.unshift(Date.now())
-      mpvue.setStorageSync({
-        key: 'logs',
-        data: logs
-      })
-    } else {
-      logs = mpvue.getStorageSync('logs') || []
-      logs.unshift(Date.now())
-      mpvue.setStorageSync('logs', logs)
-    }
-  },
-  log () {
-    console.log(`log at:${Date.now()}`)
+    // 调用登陆接口
+    wx.login({
+      success: async (res)=>{
+        if (res.code) {
+          //发起网络请求
+          let data = await login(res.code);
+          console.log('res...', data);
+        } else {
+          console.log('登录失败！' + res.errMsg)
+        }
+      }
+    })
   }
 }
 </script>
 
 <style>
-.container {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  padding: 200rpx 0;
-  box-sizing: border-box;
-}
-/* this rule will be remove */
-* {
-  transition: width 2s;
-  -moz-transition: width 2s;
-  -webkit-transition: width 2s;
-  -o-transition: width 2s;
-}
+  page{
+    width: 100%;
+    height: 100%;
+  }
 </style>

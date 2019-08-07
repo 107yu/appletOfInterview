@@ -2,8 +2,8 @@
   "name": "sign",
   "version": "1.0.0",
   "mpvueTemplateProjectVersion": "0.1.0",
-  "description": "A Sign Project aim to improve  interview  successfully",
-  "author": "yjj <yujuanjuan107@163.com>",
+  "description": "A Sign Project aim to improve interview sucessfully",
+  "author": "jasonandjay <342690199@qq.com>",
   "private": true,
   "scripts": {
     "dev:wx": "node build/dev-server.js wx",
@@ -24,6 +24,7 @@
     "lint": "eslint --ext .js,.vue src"
   },
   "dependencies": {
+    "flyio": "^0.6.14",
     "mpvue": "^2.0.0",
     "vuex": "^3.0.1"
   },
