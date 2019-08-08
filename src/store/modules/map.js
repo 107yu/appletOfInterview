@@ -30,9 +30,6 @@ const mutations = {
     //回传地址
     targetAddress(state,payload){
         state.targetAddress=payload;
-        wx.navigateTo({
-            url:"/pages/addList/main"
-          })
     }
 }
 

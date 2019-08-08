@@ -14,7 +14,7 @@ export default new Vuex.Store({
     modules : {
         map,
         addInterview,
-        interviewList
+        interviewList,
     },
     plugins : [CreateLogger()]
 })

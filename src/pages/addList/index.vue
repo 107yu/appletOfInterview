@@ -1,39 +1,35 @@
 <template>
   <form @submit="submit" report-submit class="addInterview">
-     <h2>面试信息</h2>
-      <ul class="form">
-        <li>
-          <label>公司名称</label>
-          <input type="text" placeholder="请输入公司名称" v-model="currentCompany">
-        </li>
-        <li>
-          <label>公司电话</label>
-          <input type="text" placeholder="请输入面试联系人电话" v-model="currentMobile" maxlength="11">
-        </li>
-        <li>
-          <label>面试时间</label>
-          <picker
-            mode="multiSelector"
-            :range="dateRange"
-            :value="info.date"
-            @change="dateChange"
-            @columnchange="columnChange"
-          ><view class="date">{{dateShow}}</view>
-          </picker>
-          <i class="iconfont icon-jinggao2" @click="showToast"></i>
-        </li>
-        <li>
-          <label>面试地址</label>
-          <input type="text" placeholder="请选择面试地址" @focus="chooseAddress" v-model="targetAddress">
-        </li>
-      </ul>
-      <h2>备注信息</h2>
-      <div class="form textarea">
-          <textarea  cols="30" rows="10" placeholder="备注信息(可选，100字以内)" maxlength="100" v-model="note"></textarea>
-      </div>
-      <div class="confirm">
-        <button form-type="submit">确认</button>
-      </div>
+    <h2>面试信息</h2>
+    <ul>
+      <li>
+        <label>公司名称</label>
+        <input type="text" placeholder="请输入公司名称" v-model="currentCompany">
+      </li>
+      <li>
+        <label>公司电话</label>
+        <input type="text" placeholder="请输入面试联系人电话" v-model="currentMobile" maxlength="11">
+      </li>
+      <li>
+        <label>面试时间</label>
+        <picker
+          mode="multiSelector"
+          :range="dateRange"
+          :value="info.date"
+          @change="dateChange"
+          @columnchange="columnChange"
+        ><view class="date">{{dateShow}}</view>
+        </picker>
+        <i class="iconfont icon-jinggao2" @click="showToast"></i>
+      </li>
+      <li>
+        <label>面试地址</label>
+        <input type="text" placeholder="请选择面试地址" @click="chooseAddress" v-model="targetAddress.address">
+      </li>
+    </ul>
+    <h2>备注信息</h2>
+    <textarea  placeholder="备注信息(可选，100字以内)" maxlength="100" v-model="note"></textarea>
+    <button form-type="submit">确认</button>
   </form>
 </template>
 <script>
@@ -89,64 +85,74 @@ export default {
     }
   },
   methods:{
-  //选择地址
-  chooseAddress(){
-    wx.navigateTo({
-      url:"/pages/address/main"
-    })
-  },
-  //点击警告出现提示框
-  showToast(){
-    wx.showToast({
-      title: '在面试前一个小时，我们会通知哦',
-      icon: 'none',
-      duration: 1000
-    })
-  },
-  // 监听多列选择器每列变化
-  columnChange(e){
-    let {column, value} = e.target;
-    let date = [...this.info.date];
-    date[column] = value;
-    this.info.date = date;
-  },
-  //点击确认进行提交
-  submit(e) {
-     if(!this.currentCompany){
-      wx.showToast({
-      title: '请填写公司名称',
-      icon: 'none',
-      duration: 1000
+    ...mapActions({
+      submitInterview:"addInterview/sendInterview"
+    }),
+    //选择地址
+    chooseAddress(){
+      wx.navigateTo({
+        url:"/pages/address/main"
       })
-      return false;
-    }
-    if(!/^1[3456789]\d{9}$/.test(this.currentMobile)){
+    },
+    //点击警告出现提示框
+    showToast(){
       wx.showToast({
-      title: '请填写正确的手机号',
-      icon: 'none',
-      duration: 1000
+        title: '在面试前一个小时，我们会通知哦',
+        icon: 'none',
+        duration: 1000
       })
-      return false;
-    }
-    if(!this.targetAddress){
-      wx.showToast({
-      title: '请填写地址信息',
-      icon: 'none',
-      duration: 1000
-      })
-      return false;
-    }
-    console.log('form发生了submit事件，携带数据为',e.target.formId)
-  },
+    },
+    // 监听多列选择器每列变化
+    columnChange(e){
+      let {column, value} = e.target;
+      let date = [...this.info.date];
+      date[column] = value;
+      this.info.date = date;
+    },
+    //点击确认--进行提交
+    submit(e) {
+      if(!this.currentCompany){
+        wx.showToast({
+        title: '请填写公司名称',
+        icon: 'none',
+        duration: 1000
+        })
+        return false;
+      }
+      if(!/^1[3456789]\d{9}$/.test(this.currentMobile)){
+        wx.showToast({
+        title: '请填写正确的手机号',
+        icon: 'none',
+        duration: 1000
+        })
+        return false;
+      }
+      if(!this.targetAddress){
+        wx.showToast({
+        title: '请填写地址信息',
+        icon: 'none',
+        duration: 1000
+        })
+        return false;
+      }
+      let info={
+        "company" : this.currentCompany,	
+        "phone" : this.currentMobile,		
+        "form_id" : e.target.formId,		
+        "address" : this.targetAddress.address,	
+        "latitude" : this.targetAddress.location.lat*1,	
+        "longitude" : this.targetAddress.location.lng*1,	
+        "start_time" : moment(this.dateShow).unix()*1000*1,	
+        "description" : this.note
+      };
+      this.submitInterview(info)
+    },
   },
   created(){
      // 如果当前时间是夜里十一点之后，过滤掉今天
     if (moment().hour() == 23){
       this.info.date = [1,0,0];
     }
-  },
-  mounted(){
-
   }
 }
 </script>
@@ -160,7 +166,7 @@ h2{
   background: #ccc;
   padding: 20rpx;
 }
-.form{
+ul{
    padding: 20rpx;
 }
 li{
@@ -184,11 +190,14 @@ li input{
    right: 20rpx;
    z-index: 99;
 }
-.textarea{
+textarea{
+  width: 80%;
   border:1px solid #ccc;
   margin:20rpx;
+  padding: 20rpx;
 }
-.confirm{
+button{
+  border: 0;
   width: 100%;
   height: 80rpx;
   text-align: center;

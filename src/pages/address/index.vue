@@ -5,7 +5,7 @@
         <input type="text" placeholder="面试地址"  v-model="value" @blur="getSuggestion(value)">
      </div>
      <ul>
-          <li v-for="(item,index) in addressList" :key="index" @click="getAddress(item.address)">
+          <li v-for="(item,index) in addressList" :key="index" @click="getAddress(item)">
             <span><img src="../../../static/images/location.svg" alt=""></span>
             <div>
               <p>{{item.title}}</p>
@@ -43,8 +43,14 @@ export default {
 
     //点击获取--回传地址
     ...mapMutations({
-       getAddress:"map/targetAddress"
+       sendAddress:"map/targetAddress"
     }),
+    getAddress(item){
+      wx.navigateBack({
+        delta:1
+      })
+      this.sendAddress(item)
+    }
   },
   created(){
      
