@@ -41,7 +41,7 @@ export default {
   methods:{
     toList(){
       wx.navigateTo({
-        url:'/pages/list/main'
+        url:'/pages/interviewList/main'
       })
     }
   },

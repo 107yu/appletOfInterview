@@ -17,9 +17,9 @@ export default {
         if (res.code) {
           //发起网络请求
           let data = await login(res.code);
-          console.log('res...', data);
+          // console.log('res...', data);
         } else {
-          console.log('登录失败！' + res.errMsg)
+          // console.log('登录失败！' + res.errMsg)
         }
       }
     })
@@ -28,8 +28,10 @@ export default {
 </script>
 
 <style>
-  page{
-    width: 100%;
-    height: 100%;
-  }
+page{
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
 </style>

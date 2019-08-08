@@ -1,10 +1,12 @@
 {
   "pages": [
-    "pages/map/main",
-    "pages/login/main",
-    "pages/list/main",
     "pages/addList/main",
-    "pages/address/main"
+    "pages/interviewList/main",
+    "pages/map/main",
+   
+    "pages/address/main",
+    
+    "pages/login/main"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -6,10 +6,13 @@
         :longitude="longitude"
         :latitude="latitude"
       ></map>
-      <cover-view class="play">
-        <button class="location" @click="location">定位</button>
-      </cover-view>
-      <button class="goToInterview" @click="goToInterview">添加面试</button>
+        <cover-view class="btn user"  @click="goToUser">
+          <cover-image class="img" src="/static/images/user.png" />
+        </cover-view>
+        <cover-view class="btn location" @click="location">
+          <cover-image class="img" src="/static/images/location.png" />
+        </cover-view>
+      <div class="goToInterview" @click="goToInterview">添加面试</div>
   </div>
 </template>
 <script>
@@ -32,6 +35,13 @@ export default {
     goToInterview(){
       wx.navigateTo({
         url:'/pages/addList/main'
+      })
+    },
+    
+    //点击去个人信息页面
+    goToUser(){
+      wx.navigateTo({
+        url:'/pages/login/main'
       })
     },
 
@@ -65,18 +75,34 @@ export default {
     height: 92rpx;
     background: #000;
     color:#fff;
+    text-align: center;
+    line-height: 92rpx;
   }
-  .location{
+  .btn{
     width: 100rpx;
     height: 100rpx;
     border-radius: 50%;
     text-align: center;
     line-height: 100rpx;
-    background: #fff;
     color: #000;
     position: fixed;
-    bottom: 100rpx;
-    right: 50rpx;
+    bottom: 140rpx;
     font-weight: 600;
+    z-index: 999;
+  }
+  .btn i{
+    font-size: 34px;
+    color: rgb(27, 161, 214);
+  }
+  .location{
+     left: 30rpx;
+  }
+  .user{
+    right: 30rpx;
+    background: #fff;
+  }
+  .location .img{
+    width: 80rpx;
+    height:100rpx;
   }
 </style>

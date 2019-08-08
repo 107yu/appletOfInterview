@@ -1,10 +1,22 @@
 <template>
   <div class="wrap">
-      <map></map>
-      <button class="goToInterview" @click="goToInterview">添加面试</button>
+     <div class="header">
+        <span>北京</span>
+        <input type="text" placeholder="面试地址"  v-model="value" @blur="getSuggestion(value)">
+     </div>
+     <ul>
+          <li v-for="(item,index) in addressList" :key="index" @click="getAddress(item.address)">
+            <span><img src="../../../static/images/location.svg" alt=""></span>
+            <div>
+              <p>{{item.title}}</p>
+              <span>{{item.address}}</span>
+            </div>
+          </li>
+     </ul>
   </div>
 </template>
 <script>
+import {mapState,mapActions,mapMutations} from "vuex"
 export default {
   props:{
 
@@ -14,21 +26,28 @@ export default {
   },
   data(){
     return {
-
+      value:""
     }
   },
   computed:{
-
+    //搜索地址之后返回的列表
+    ...mapState({
+      addressList:state=>state.map.addressList.filter((item)=>item.city==="北京市")
+    })
   },
   methods:{
-    goToInterview(){
-      wx.navigateTo({
-        url:'/pages/login/main'
-      })
-    }
+    //搜索地址
+    ...mapActions({
+      getSuggestion:"map/getSuggestion",
+    }),
+
+    //点击获取--回传地址
+    ...mapMutations({
+       getAddress:"map/targetAddress"
+    }),
   },
   created(){
-
+     
   },
   mounted(){
 
@@ -43,14 +62,34 @@ export default {
     display: flex;
     flex-direction: column;
   }
-  .wrap>map{
-    width: 100%;
-    flex: 1;
+  .header{
+    display: flex;
+    border-top:1px solid #aaa;
+    border-bottom: 1px solid #aaa;
+    padding: 20rpx;
   }
-  .goToInterview{
-    width: 100%;
-    height: 92rpx;
-    background: #000;
-    color:#fff;
+  .header span{
+    padding-right:20rpx;
+    border-right: 1px solid #ccc;
+  }
+  .header input{
+    flex: 1;
+    padding-left: 20rpx;
+  }
+  li{
+    display: flex;
+    border-bottom: 1px solid #aaa;
+    padding:20rpx;
+    align-items: center;
+  }
+  li div{
+    padding: 0 20rpx;
+  }
+  li div>span{
+    color: #aaa;
+  }
+  img{
+    width: 44rpx;
+    height: 44rpx;
   }
 </style>
