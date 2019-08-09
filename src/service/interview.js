@@ -2,7 +2,6 @@ import fly from '@/utils/request';
 
 //添加面试：
 export let addInterview = code=>{
-    console.log("codec",code)
     return fly.post('/sign', code);
 }
 
@@ -13,10 +12,10 @@ export let interviewList = code=>{
 
 //更新面试信息：
 export let updateInterview = code=>{
-    return fly.put('/sign/1',{code});
+    return fly.put(`/sign/${code.id}`,code.info);
 }
 
 //获取面试详情：
 export let interviewDetail = code=>{
-    return fly.get('/sign/7');
+    return fly.get(`/sign/${code}`);
 }

@@ -1,17 +1,17 @@
 <template>
     <li>
         <div>
-            <p class="title"  @click="goToDetail">北京八维研修学院</p>
+            <p class="title"  @click="goToDetail">{{item.company}}</p>
             <span class="notStart">
                 {{item.status===-1?'未开始':item.status===0?'已打卡':'已放弃'}}
             </span>
         </div>
         <div>
-            <p>北京市海淀区上地软件园57号</p>
+            <p>{{item.address.address}}</p>
         </div>
         <div>
-            <p>面试时间：2019-08-06 17:00</p>
-            <span class="notRemind">未提醒</span>
+            <p>面试时间：{{item.start_time}}</p>
+            <span class="notRemind">{{item.remind===-1?'未提醒':item.remind===0?'已提醒':'取消提醒'}}</span>
         </div>
     </li>
 </template>
@@ -19,9 +19,6 @@
 import {mapState,mapActions,mapMutations} from "vuex"
 export default {
     props:["item"],
-    components:{
-       
-    },
     data(){
         return {
 
@@ -32,10 +29,9 @@ export default {
     },
     methods:{
         goToDetail(){
-            console.log(this.item)
-        wx.navigateTo({
-            url:'/pages/interviewDetail/main'
-        })
+            wx.navigateTo({
+                url:`/pages/interviewDetail/main?id=${this.item.id}`
+            })
         }
     },
     created(){
@@ -66,7 +62,7 @@ li .title{
 li span{
     display: inline-block;
     padding:6rpx;
-    font-size: 24rpx;
+    font-size:28rpx;
 }
 .notStart{
     background: #eee;

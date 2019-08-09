@@ -40,10 +40,6 @@ export default {
     ...mapActions({
       getList:'interviewList/getList', //获取数据
     }),
-    //点击进入详情页
-    goToDetail(item){
-      console.log(item.id)
-    }
   },
   created(){
   

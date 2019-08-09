@@ -1,39 +1,37 @@
 <template>
-  <div class="wrap">
+   <div class="wrap">
       <MyMap class="map"></MyMap>
-        <cover-view class="btn user"  @click="goToUser">
-          <cover-image class="img" src="/static/images/wode1.png" />
-        </cover-view>
-      <div class="goToInterview" @click="goToInterview">添加面试</div>
+      <div class="goToInterview" @click="goToInterview">打卡</div>
   </div>
 </template>
 <script>
-import {mapState,mapActions} from "vuex"
+import {mapState,mapActions,mapMutations} from "vuex"
 export default {
+  props:{
+
+  },
+  components:{
+
+  },
   data(){
     return {
-
+       
     }
   },
   computed:{
     ...mapState({
-      longitude : state=>state.map.longitude,
-      latitude : state=>state.map.latitude
+      interviewDetail: state=>state.interviewDetail.detail
     })
   },
   methods:{
-    //点击去添加面试页面
+   //点击去添加面试页面
     goToInterview(){
-      wx.navigateTo({
-        url:'/pages/addList/main'
-      })
+      console.log(this.interviewDetail)
+      // wx.navigateTo({
+      //   url:'/pages/addList/main'
+      // })
     },
-    //点击去个人信息页面
-    goToUser(){
-      wx.navigateTo({
-        url:'/pages/login/main'
-      })
-    },
+  
   },
   created(){
 
@@ -74,12 +72,5 @@ export default {
   .btn i{
     font-size: 34px;
     color: rgb(27, 161, 214);
-  }
-  /* .location{
-     left: 30rpx;
-  } */
-  .user{
-    right: 30rpx;
-    background: #fff;
   }
 </style>

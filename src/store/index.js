@@ -7,6 +7,7 @@ import map from "./modules/map"
 import addInterview from "./modules/addInterview"
 import interviewList from "./modules/interviewList"
 import user from "./modules/user"
+import interviewDetail from "./modules/interviewDetail"
 
 Vue.use(Vuex);
 
@@ -16,6 +17,7 @@ export default new Vuex.Store({
         addInterview,
         interviewList,
         user,
+        interviewDetail,
     },
     plugins : [CreateLogger()]
 })

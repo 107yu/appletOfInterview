@@ -1,10 +1,12 @@
 {
   "pages": [
-    "pages/interviewList/main",
-    "pages/login/main",
     "pages/map/main",
+    "pages/interviewList/main",
     "pages/interviewDetail/main",
+    "pages/login/main",
+   
     "pages/address/main",
+    "pages/punchClock/main",
     "pages/addList/main"
     
   ],

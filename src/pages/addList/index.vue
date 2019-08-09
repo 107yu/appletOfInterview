@@ -142,10 +142,10 @@ export default {
         "company" : this.currentCompany,	
         "phone" : this.currentMobile,		
         "form_id" : e.target.formId,		
-        "address" : this.targetAddress.address,	
+        "address" : JSON.stringify({address:this.targetAddress.address}),	
         "latitude" : this.targetAddress.location.lat*1,	
         "longitude" : this.targetAddress.location.lng*1,	
-        "start_time" : moment(this.dateShow).unix()*1000*1,	
+        "start_time" : moment(this.dateShow).unix()*1000,	
         "description" : this.note
       };
       this.submitInterview(info)

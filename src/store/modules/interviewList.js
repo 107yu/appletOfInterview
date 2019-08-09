@@ -1,25 +1,31 @@
 import {interviewList} from '@/service';
-
+import moment from "moment"
 const state = {
     list:[],
 }
 
 const mutations = {
     interList(state,payload){
-        console.log(payload)
         state.list = payload
     }
 }
 
 const actions = {
     async getList({commit},payload){
-        console.log(payload)
         let data = null;
         if(payload===2){
             data = await  interviewList()
         }else{
             data = await  interviewList({status:payload})
         }
+        data.data.forEach(item=>{
+            if(item.address.includes('{')){
+                item.address=JSON.parse(item.address)
+            }else{
+                item.address={"address":item.address}
+            }
+            item.start_time = moment(Number(item.start_time)).format("YYYY-MM-DD hh:mm")
+        })
         commit("interList",data.data)
     }
 }

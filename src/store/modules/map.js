@@ -10,7 +10,7 @@ const state = {
     latitude : 23.099994,  //纬度
     longitude : 113.324520, //经度
     addressList:[], //搜索地址列表
-    targetAddress:"" //回传地址
+    targetAddress:{}, //回传地址
 }
 
 //模块内的同步改变
@@ -29,6 +29,7 @@ const mutations = {
 
     //回传地址
     targetAddress(state,payload){
+        console.log(payload)
         state.targetAddress=payload;
     }
 }
