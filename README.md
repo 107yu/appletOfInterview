@@ -4,10 +4,10 @@ vue init mpvue/mpvue-quickstart myproject
 cd myproject
 
 ## 安装依赖
-yarn
+npm i
 
 ## 开发时构建
-npm dev
+npm run dev
 
 ## 打包构建
 npm build
