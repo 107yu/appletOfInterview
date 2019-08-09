@@ -47,7 +47,7 @@ export default {
 <style scoped lang="">
 div{
     width: 100%;
-    height: 92%;
+    height: 100%;
 }
 map{
     width: 100%;
@@ -64,7 +64,7 @@ map{
     bottom: 140rpx;
     font-weight: 600;
     z-index: 999;
-     left: 30rpx;
+    left: 30rpx;
   }
 
 </style>

@@ -1,7 +1,7 @@
 <template>
-    <li>
+    <li  @click="goToDetail">
         <div>
-            <p class="title"  @click="goToDetail">{{item.company}}</p>
+            <p class="title">{{item.company}}</p>
             <span class="notStart">
                 {{item.status===-1?'未开始':item.status===0?'已打卡':'已放弃'}}
             </span>

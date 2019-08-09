@@ -15,9 +15,9 @@ const state = {
 
 //模块内的同步改变
 const mutations = {
-
     //定位地址
     updateLocation(state,payload){
+        console.log(payload)
         state.latitude = payload.latitude;
         state.longitude = payload.longitude;
     },
@@ -29,7 +29,6 @@ const mutations = {
 
     //回传地址
     targetAddress(state,payload){
-        console.log(payload)
         state.targetAddress=payload;
     }
 }

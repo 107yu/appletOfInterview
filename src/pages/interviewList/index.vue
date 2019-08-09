@@ -5,11 +5,13 @@
           {{item.title}}
         </span>
      </div>
-     <scroll-view scroll-y style="height:100%" class="content">
+     <div  class="content">
+       <scroll-view scroll-y style="height:100%">
         <ul class="menu" v-if="interviewList">
           <InderviewList v-for="(item,index) in interviewList" :key="index" :item="item"></InderviewList>
         </ul>
-     </scroll-view>
+      </scroll-view>
+     </div>
   </div>
 </template>
 <script>
@@ -74,5 +76,6 @@ export default {
 }
 .content{
   flex: 1;
+  overflow: hidden;
 }
 </style>

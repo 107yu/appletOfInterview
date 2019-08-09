@@ -1,7 +1,9 @@
 <template>
    <div class="wrap">
-      <MyMap class="map"></MyMap>
-      <div class="goToInterview" @click="goToInterview">打卡</div>
+      <div class="address">
+        <MyMap></MyMap>
+      </div>
+      <div class="punchClock" @click="punchClock">打卡</div>
   </div>
 </template>
 <script>
@@ -20,18 +22,16 @@ export default {
   },
   computed:{
     ...mapState({
-      interviewDetail: state=>state.interviewDetail.detail
+      interviewDetail: state=>state.interviewDetail.detail,
     })
   },
   methods:{
    //点击去添加面试页面
-    goToInterview(){
-      console.log(this.interviewDetail)
-      // wx.navigateTo({
-      //   url:'/pages/addList/main'
-      // })
+    punchClock(){
+      let currentLatitude = this.interviewDetail.latitude
+      let currentLongitude = this.interviewDetail.longitude
+     
     },
-  
   },
   created(){
 
@@ -49,7 +49,7 @@ export default {
     display: flex;
     flex-direction: column;
   }
-  .goToInterview{
+  .punchClock{
     width: 100%;
     height: 92rpx;
     background: #000;
@@ -57,20 +57,7 @@ export default {
     text-align: center;
     line-height: 92rpx;
   }
-  .btn{
-    width: 100rpx;
-    height: 100rpx;
-    border-radius: 50%;
-    text-align: center;
-    line-height: 100rpx;
-    color: #000;
-    position: fixed;
-    bottom: 140rpx;
-    font-weight: 600;
-    z-index: 999;
-  }
-  .btn i{
-    font-size: 34px;
-    color: rgb(27, 161, 214);
+  .address{
+    flex: 1;
   }
 </style>

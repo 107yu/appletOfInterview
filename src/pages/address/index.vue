@@ -38,9 +38,12 @@ export default {
   methods:{
     //搜索地址
     ...mapActions({
-      getSuggestion:"map/getSuggestion",
+      sendSuggestion:"map/getSuggestion",
     }),
-
+    //防抖
+    getSuggestion(value){
+      this.sendSuggestion(value)
+    },
     //点击获取--回传地址
     ...mapMutations({
        sendAddress:"map/targetAddress"

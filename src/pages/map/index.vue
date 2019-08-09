@@ -1,9 +1,11 @@
 <template>
   <div class="wrap">
-      <MyMap class="map"></MyMap>
-        <cover-view class="btn user"  @click="goToUser">
+      <div class="address">
+        <MyMap></MyMap>
+        <cover-view class="user"  @click="goToUser">
           <cover-image class="img" src="/static/images/wode1.png" />
         </cover-view>
+      </div>
       <div class="goToInterview" @click="goToInterview">添加面试</div>
   </div>
 </template>
@@ -53,33 +55,27 @@ export default {
   }
   .goToInterview{
     width: 100%;
-    height: 92rpx;
+    height: 90rpx;
     background: #000;
     color:#fff;
     text-align: center;
-    line-height: 92rpx;
+    line-height: 90rpx;
   }
-  .btn{
-    width: 100rpx;
-    height: 100rpx;
-    border-radius: 50%;
-    text-align: center;
-    line-height: 100rpx;
-    color: #000;
-    position: fixed;
-    bottom: 140rpx;
-    font-weight: 600;
-    z-index: 999;
+  .address{
+    flex: 1;
   }
-  .btn i{
-    font-size: 34px;
-    color: rgb(27, 161, 214);
-  }
-  /* .location{
-     left: 30rpx;
-  } */
   .user{
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 100rpx;
+  color: #000;
+  position: fixed;
+  bottom: 140rpx;
+  font-weight: 600;
+  z-index: 999;
     right: 30rpx;
-    background: #fff;
-  }
+  background: #fff;
+}
 </style>
