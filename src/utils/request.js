@@ -14,7 +14,6 @@ fly.config.baseURL = "https://sign.jasonandjay.com"
 fly.interceptors.request.use((request)=>{
   //把openid放在请求的头部
   let openid = wx.getStorageSync('openid');
-  console.log(openid)
   if (openid){
     request.headers['openid'] = openid;
   }

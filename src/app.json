@@ -1,11 +1,11 @@
 {
   "pages": [
-    "pages/addList/main",
+    "pages/interviewDetail/main",
     "pages/interviewList/main",
-    "pages/map/main",
-   
     "pages/address/main",
-    
+    "pages/addList/main",
+    "pages/map/main",
+
     "pages/login/main"
   ],
   "window": {

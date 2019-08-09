@@ -12,12 +12,14 @@ const mutations = {
 }
 
 const actions = {
-    getList({commit},payload){
-      interviewList(payload).then(res=>{
-        if(res.code===0){
-            commit("interList",res.data)
+    async getList({commit},payload){
+        let data = null;
+        if(payload===2){
+            data = await  interviewList()
+        }else{
+            data = await  interviewList({status:payload})
         }
-      })
+        commit("interList",data.data)
     }
 }
 

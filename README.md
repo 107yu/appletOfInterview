@@ -1,10 +1,4 @@
 # sign
-
-> A Sign Project aim to improve interview sucessfully
-
-## Build Setup
-
-``` bash
 # 初始化项目
 vue init mpvue/mpvue-quickstart myproject
 cd myproject
@@ -31,7 +25,17 @@ npm build:tt
 npm build:my
 
 # 生成 bundle 分析报告
-npm run build --report
-```
 
-For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+# 功能列表
+ - 定位功能
+ - 我的功能
+   - 绑定手机号
+ - 面试功能
+ - 添加面试
+ - 面试列表
+ - 面试详情
+ - 面试分享
+ - 面试推送
+ - 打卡功能
+ - 面试导航
+ - 支付功能

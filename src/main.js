@@ -4,6 +4,7 @@ import App from './App'
 import store from "./store"
 //picker
 import Picker from "./components/picker.vue"
+import InderviewList from "./components/inderviewList.vue"
 Vue.config.productionTip = false
 App.mpType = 'app'
 
@@ -11,5 +12,6 @@ App.mpType = 'app'
 Vue.prototype.$store=store
 
 Vue.component('myPicker',Picker)
+Vue.component('InderviewList',InderviewList)
 const app = new Vue(App)
 app.$mount()

@@ -52,7 +52,6 @@ const actions = {
           keyword: payload,
           success: res=>{
             commit("search",res.data)
-            console.log('getSuggestion...', res);
           }
         })
       }

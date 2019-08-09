@@ -45,13 +45,14 @@ export default {
     return {
       info: {
         date: [0,0,0],
-      }
+      },
     }
   },
   computed:{
     //当前选择的地址
     ...mapState({
-      targetAddress:state=>state.map.targetAddress
+      targetAddress: state=>state.map.targetAddress,
+      addStatus: state=>state.addInterview.addStatus,
     }),
     // 处理面试日期
     dateRange(){
@@ -86,7 +87,7 @@ export default {
   },
   methods:{
     ...mapActions({
-      submitInterview:"addInterview/sendInterview"
+      submitInterview : "addInterview/sendInterview"
     }),
     //选择地址
     chooseAddress(){
@@ -153,7 +154,8 @@ export default {
     if (moment().hour() == 23){
       this.info.date = [1,0,0];
     }
-  }
+  },
+
 }
 </script>
 <style scoped lang="">
@@ -171,13 +173,13 @@ ul{
 }
 li{
   display: flex;
-  padding: 20rpx 0;
+  padding: 30rpx 0;
   border-bottom: 1px solid #eee;
   flex-wrap: wrap;
 }
 li label{
-  color:#aaa;
-  padding-right: 10rpx;
+  color:#333;
+  margin-right: 20rpx;
 }
 li input{
   flex: 1;
