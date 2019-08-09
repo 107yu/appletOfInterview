@@ -1,8 +1,10 @@
 <template>
-    <li @click="goToDetail">
+    <li>
         <div>
-            <p class="title">北京八维研修学院</p>
-            <span class="notStart">未开始</span>
+            <p class="title"  @click="goToDetail">北京八维研修学院</p>
+            <span class="notStart">
+                {{item.status===-1?'未开始':item.status===0?'已打卡':'已放弃'}}
+            </span>
         </div>
         <div>
             <p>北京市海淀区上地软件园57号</p>

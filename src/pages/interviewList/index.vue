@@ -5,9 +5,11 @@
           {{item.title}}
         </span>
      </div>
-     <ul class="menu">
-       <InderviewList v-for="(item,index) in interviewList" :key="index" :item="item"></InderviewList>
-     </ul>
+     <scroll-view scroll-y style="height:100%" class="content">
+        <ul class="menu" v-if="interviewList">
+          <InderviewList v-for="(item,index) in interviewList" :key="index" :item="item"></InderviewList>
+        </ul>
+     </scroll-view>
   </div>
 </template>
 <script>
@@ -17,7 +19,7 @@ export default {
     return {
       title:[
         {title:"未开始",status:-1},
-        {title:"已打卡",status:-0},
+        {title:"已打卡",status:0},
         {title:"已放弃",status:1},
         {title:"全部",status:2}
         ],
@@ -55,7 +57,6 @@ export default {
  .wrap{
    width: 100%;
    height: 100%;
-   overflow: hidden;
    display: flex;
    flex-direction: column;
  }
@@ -75,8 +76,7 @@ export default {
   color:blue;
   border-bottom: 1px solid blue;
 }
-.menu{
+.content{
   flex: 1;
-  overflow:scroll;
 }
 </style>

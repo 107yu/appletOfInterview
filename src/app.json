@@ -1,12 +1,12 @@
 {
   "pages": [
-    "pages/interviewDetail/main",
     "pages/interviewList/main",
-    "pages/address/main",
-    "pages/addList/main",
+    "pages/login/main",
     "pages/map/main",
-
-    "pages/login/main"
+    "pages/interviewDetail/main",
+    "pages/address/main",
+    "pages/addList/main"
+    
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -2,7 +2,7 @@
   <div class="wrap">
      <div class="header">
         <span>北京</span>
-        <input type="text" placeholder="面试地址"  v-model="value" @blur="getSuggestion(value)">
+        <input type="text" placeholder="面试地址"  v-model="value" @input="getSuggestion(value)">
      </div>
      <ul>
           <li v-for="(item,index) in addressList" :key="index" @click="getAddress(item)">

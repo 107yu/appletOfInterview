@@ -29,7 +29,7 @@
     </ul>
     <h2>备注信息</h2>
     <textarea  placeholder="备注信息(可选，100字以内)" maxlength="100" v-model="note"></textarea>
-    <button form-type="submit">确认</button>
+    <button form-type="submit" :class="{show:flag}">确认</button>
   </form>
 </template>
 <script>
@@ -53,6 +53,8 @@ export default {
     ...mapState({
       targetAddress: state=>state.map.targetAddress,
       addStatus: state=>state.addInterview.addStatus,
+      flag: state=>state.addInterview.flag,
+      note: state=>state.addInterview.note,
     }),
     // 处理面试日期
     dateRange(){
@@ -147,6 +149,7 @@ export default {
         "description" : this.note
       };
       this.submitInterview(info)
+      
     },
   },
   created(){
@@ -208,6 +211,8 @@ button{
   color:#fff;
   font-size: 40rpx;
 }
-
+.show{
+  background: blue;
+}
 
 </style>

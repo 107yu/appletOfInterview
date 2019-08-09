@@ -6,7 +6,7 @@ import CreateLogger from "vuex/dist/logger"
 import map from "./modules/map"
 import addInterview from "./modules/addInterview"
 import interviewList from "./modules/interviewList"
-
+import user from "./modules/user"
 
 Vue.use(Vuex);
 
@@ -15,6 +15,7 @@ export default new Vuex.Store({
         map,
         addInterview,
         interviewList,
+        user,
     },
     plugins : [CreateLogger()]
 })

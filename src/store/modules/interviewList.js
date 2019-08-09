@@ -13,6 +13,7 @@ const mutations = {
 
 const actions = {
     async getList({commit},payload){
+        console.log(payload)
         let data = null;
         if(payload===2){
             data = await  interviewList()
