@@ -1,6 +1,6 @@
 <script>
 import {login} from '@/service';
-import "../static/font/iconfont.css"
+import "../src/font/iconfont.css"
 export default {
   created () {
     // 调用API从本地缓存中获取数据
