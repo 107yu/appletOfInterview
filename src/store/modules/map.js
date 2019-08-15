@@ -7,8 +7,8 @@ const qqMapSdk = new QQMapWX({
 
 //模块所有的状态
 const state = {
-    latitude : 23.099994,  //纬度
-    longitude : 113.324520, //经度
+    latitude : null,  //纬度
+    longitude : null, //经度
     addressList:[], //搜索地址列表
     targetAddress:{}, //回传地址
 }
@@ -16,8 +16,8 @@ const state = {
 //模块内的同步改变
 const mutations = {
     //定位地址
+    
     updateLocation(state,payload){
-        console.log(payload)
         state.latitude = payload.latitude;
         state.longitude = payload.longitude;
     },

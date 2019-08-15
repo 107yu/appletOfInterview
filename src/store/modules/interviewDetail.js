@@ -27,9 +27,10 @@ const actions = {
     //更改面试信息：
     async changeInterview({commit},payload){
         let data = await updateInterview(payload)
-        if(data.code===0){
+        return data
+        // if(data.code===0){
             
-        }
+        // }
     }
 
 }

@@ -21,12 +21,12 @@
             <button open-type="openSetting" class="setting">设置</button>
           </li>
       </ul>
-      <div v-if="!show" class="getphone">
+      <!-- <div v-if="!show" class="getphone">
         <div class="getPhoneBtn">
             <p>为了更好地获取我们的服务，我们需要获取您的手机号</p>
             <button open-type="getPhoneNumber" @getphonenumber="getPhoneNumber">确定</button>
         </div>
-      </div>
+      </div> -->
   </div>
 </template>
 <script>
