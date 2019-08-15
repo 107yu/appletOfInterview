@@ -18,9 +18,9 @@
               <span>客服中心</span>
             </div>
             <i class="iconfont icon-fanhui2"></i>
+            <button open-type="openSetting" class="setting">设置</button>
           </li>
       </ul>
-      <button v-if="!phone" open-type="openSetting">设置</button>
       <div v-if="!show" class="getphone">
         <div class="getPhoneBtn">
             <p>为了更好地获取我们的服务，我们需要获取您的手机号</p>
@@ -111,6 +111,7 @@ export default {
   display: flex;
   justify-content: space-between;
   padding: 0 20rpx;
+  position: relative;
 }
 .info>li div{
   display: flex;
@@ -150,5 +151,14 @@ i{
   border:0;
   background: blue;
   color:#fff;
+}
+.setting{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top:0;
+  left:0;
+  opacity: 0;
+  z-index: 999;
 }
 </style>

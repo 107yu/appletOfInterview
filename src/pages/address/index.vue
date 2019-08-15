@@ -6,7 +6,7 @@
      </div>
      <ul>
           <li v-for="(item,index) in addressList" :key="index" @click="getAddress(item)">
-            <span><img src="../../../static/images/location.svg" alt=""></span>
+            <span><img src="/static/images/location.svg" alt=""></span>
             <div>
               <p>{{item.title}}</p>
               <span>{{item.address}}</span>
@@ -17,6 +17,7 @@
 </template>
 <script>
 import {mapState,mapActions,mapMutations} from "vuex"
+import {debounce , throttle} from "../../utils/debounce"
 export default {
   props:{
 
