@@ -17,14 +17,9 @@
 </template>
 <script>
 import {mapState,mapActions,mapMutations} from "vuex"
+//引入节流和防抖 debounce 防抖  throttle 节流
 import {debounce , throttle} from "../../utils/debounce"
 export default {
-  props:{
-
-  },
-  components:{
-
-  },
   data(){
     return {
       value:""
@@ -41,10 +36,9 @@ export default {
     ...mapActions({
       sendSuggestion:"map/getSuggestion",
     }),
-    //防抖
+    //---防抖----节流
     getSuggestion(value){
-      
-      this.sendSuggestion(value)
+      this.sendSuggestion(this.value)
     },
     //点击获取--回传地址
     ...mapMutations({
@@ -58,10 +52,10 @@ export default {
     }
   },
   created(){
-     
+     this.getSuggestion = throttle(this.getSuggestion,1000)
   },
   mounted(){
-
+   
   }
 }
 </script>
